@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>skew</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            overflow: hidden;
+        }
+        /* Red main pages */
+        .pages {
+            background-color: #E80000;
+            transition: all 2s ease-in;
+            position: absolute;
+        }
+        
+        .pages-one {
+            width: 200px;
+            height: 150px;
+            transform: translate(950px, 200px) skew(45deg, 44.5deg);
+        }
+        
+        .pages-two {
+            width: 400px;
+            height: 300px;
+            transform: translate(800px, 300px) skew(-45deg, -44.5deg);
+        }
+
+        /* 点击时展示页面 */
+        .current {
+            width: 100%;
+            height: 100%;
+            transform: skew(0deg, 0deg);
+        }
+
+        /* 眼睛 */
+        .eyes {
+            /* width: 400px; */
+            /* height: 400px; */
+            position: absolute;
+            top: 50%;
+            left: 450px;
+            margin-top: -100px;
+            background-color: black;
+        }
+        
+        .eyes div {
+            width: 100px;
+            height: 100px;
+            background-color: #fff;
+            transition: all 1s ease-out;
+        }
+        
+        .eyes .left {
+            float: left;
+            transform: skew(45deg, 43.5deg);
+            margin-right: 120px;
+        }
+        
+        .eyes .right {
+            float: right;
+            margin-left: 120px;
+            transform: skew(-45deg, -43.5deg);
+        }
+        
+        .eyes div span {
+            display: block;
+            width: 26px;
+            height: 26px;
+            margin: 45px auto;
+            background-color: #f40;
+            box-shadow: 0px 0px 5px 1px green;
+            /* border-radius: 30%; */
+        }
+        
+        .eyes:hover div.left {
+            transform: rotate(-10deg) skew(45deg, 38deg);
+        }
+        
+        .eyes:hover div.right {
+            transform: rotate(10deg) skew(-45deg, -38deg);
+        }
+
+        /* 添加move动画 */
+        .eyes div.light {
+            animation: move 1.5s infinite linear alternate;
+        }
+        
+        @keyframes move {
+            0% {}
+            100% {
+                box-shadow: 0px 0px 20px 2px #fff;
+            }
+        }
+
+        /* 倒三角 */
+        .line {
+            position: absolute;
+            background-color: #fff;
+            height: 1px;
+            width: 500px;
+            transition: all 1s ease-in-out;
+            /*display: none;*/
+        }
+        
+        .one {
+            border-radius: 0 500px;
+            transform: rotate(90deg);
+        }
+        
+        .two {
+            position: absolute;
+            top: 150px;
+            left: 190px;
+            transform: translateX(-700px);
+        }
+        
+        .three {
+            position: absolute;
+            top: 400px;
+            left: 479px;
+            transform: translateX(900px);
+        }
+        
+    </style>
+</head>
+
+<body>
+    <!-- Eyes Start-->
+    <div class="eyes">
+        <div class="left light"></div>
+        <div class="right light"></div>
+    </div>
+    <!-- Eyes End -->
+
+<!--     <div class="one line"></div>
+    <div class="two line"></div>
+    <div class="three line"></div> -->
+
+    <!-- Pages Start-->
+    <div class="pages pages-one">页面一</div>
+    <div class="pages pages-two">页面二</div>
+    <!-- Pages End-->
+    <script src="../jquery-1.11.1.min.js"></script>
+    <script>
+        var body = document.querySelector('body');
+        var pages = document.querySelectorAll('.pages');
+        var currentBox = document.querySelector('.pages-two');
+        var eyes = document.querySelector('.eyes');
+        body.addEventListener('click',function() {
+            console.log('test');
+            for(var i=0; i< pages.length; i++) {
+                pages[i].className = 'pages current';
+            }
+        },false);
+        currentBox.ondblclick = function() {
+            window.location.href = './index.html';
+        }
+        eyes.addEventListener('mouseenter',function() {
+            // var two = document.querySelector('.two');
+            // two.style.transform = 'translateX(0px)';
+            // var three = document.querySelector('.three');
+            // three.style.transform = 'translateX(0px)';
+            // var two = document.querySelector('.two');
+            // two.style.transform = 'translateX(0px)';
+            // 新建span标签
+            setTimeout(function(){
+            var span1 = document.createElement('span');
+            var span2 = document.createElement('span');
+            eyes.querySelector('.left').appendChild(span1);
+            eyes.querySelector('.right').appendChild(span2);
+            },1500);
+        },false);
+        eyes.addEventListener('mouseleave',function() {
+            var divs = eyes.querySelectorAll('div');
+            for(var i = 0; i < divs.length; i++) {
+                divs[i].innerHTML = '';
+            }
+        },false);
+    </script>
+</body>
+
+</html>
