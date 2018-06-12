@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style type="text/css">
+	* {
+		margin: 0;
+		padding: 0;
+	}
+	html,body {
+		background-color: #000;
+		width: 100%;
+		height: 100%;
+	    perspective: 2000px;
+	}
+	.box {
+		position: relative;
+		top: 50%;
+		left: 50%;
+		width: 500px;
+		height: 500px;
+		box-sizing: border-box;
+		border: 3px solid #fff;
+		border-radius: 100%;
+	    transform-style: preserve-3d;
+		transform: translate(-50%,-50%) rotateX(70deg);
+		animation: runc 3s linear infinite;
+	}
+	.some {
+	    position: absolute;
+	    top: 50%;
+	    left: 50%;
+	    width: 250px;
+	    height: 250px;
+	    border: 5px dashed red;
+	    border-style: dashed;
+	    border-radius: 100%;
+	    transform: translate3d(-50%,-50%,50px) rotateY(15deg);
+	}
+	.some2 {
+	    transform: translate3d(-50%,-50%,50px) rotateY(-15deg);
+	}
+	i {
+		position: absolute;
+		width: 20px;
+		height: 20px;
+		background-color: yellow;
+		transform: translate3d(0, 0, 25px);
+	}
+	i:nth-of-type(1) {
+		top: 100px;
+		left: 100px;
+	}
+	i:nth-of-type(2) {
+		top: 100px;
+		left: 380px;
+	}
+	i:nth-of-type(3) {
+		top: 380px;
+		left: 100px;
+	}
+	i:nth-of-type(4) {
+		top: 380px;
+		left: 380px;
+	}
+	@-webkit-keyframes runc {
+		from {  
+			transform: translate(-50%,-50%) rotateX(75deg) rotateZ(0deg);
+		}
+		to {  
+			transform: translate(-50%,-50%) rotateX(75deg) rotateZ(360deg);
+		}
+	}
+	@-o-keyframes runc {
+		from {  
+			transform: translate(-50%,-50%) rotateX(75deg) rotateZ(0deg);
+		}
+		to {  
+			transform: translate(-50%,-50%) rotateX(75deg) rotateZ(360deg);
+		}
+	}
+	@-moz-keyframes runc {
+		from {  
+			transform: translate(-50%,-50%) rotateX(75deg) rotateZ(0deg);
+		}
+		to {  
+			transform: translate(-50%,-50%) rotateX(75deg) rotateZ(360deg);
+		}
+	}
+	@keyframes runc {
+		from {  
+			transform: translate(-50%,-50%) rotateX(75deg) rotateZ(0deg);
+		}
+		to {  
+			transform: translate(-50%,-50%) rotateX(75deg) rotateZ(360deg);
+		}
+	}
+</style>
+<body>
+	<img src="./2.png" alt="">
+	<div class="box">
+		<i></i>
+		<i></i>
+		<i></i>
+		<i></i>
+		<div class="some some1"></div>
+		<div class="some some2"></div>
+	</div>
+</body>
+</html>
